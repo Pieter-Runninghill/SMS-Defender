@@ -66,9 +66,7 @@ class SmsReceiver : BroadcastReceiver() {
         subscriptionId: Int,
         status: Int
     ) {
-        if (isMessageFilteredOut(context, body)) {
-            return
-        }
+
 
         val photoUri = SimpleContactsHelper(context).getPhotoUriFromPhoneNumber(address)
         val bitmap = context.getNotificationBitmap(photoUri)
@@ -115,7 +113,9 @@ class SmsReceiver : BroadcastReceiver() {
                     context.messagesDB.insertOrUpdate(message)
                     context.updateConversationArchivedStatus(threadId, false)
                     refreshMessages()
-                    context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
+                    if (!isMessageFilteredOut(context, body)) {
+                        context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
+                    }
                 }
             }
         }

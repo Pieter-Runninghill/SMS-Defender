@@ -140,7 +140,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupPurchaseThankYou() {
-        settings_purchase_thank_you_holder.beGoneIf(isOrWasThankYouInstalled())
+        settings_purchase_thank_you_holder.beGoneIf(true)
         settings_purchase_thank_you_holder.setOnClickListener {
             launchPurchaseThankYouIntent()
         }
@@ -185,7 +185,7 @@ class SettingsActivity : SimpleActivity() {
         settings_manage_blocked_numbers_holder.beVisibleIf(isNougatPlus())
 
         settings_manage_blocked_numbers_holder.setOnClickListener {
-            if (isOrWasThankYouInstalled()) {
+            if (true) {
                 Intent(this, ManageBlockedNumbersActivity::class.java).apply {
                     startActivity(this)
                 }
@@ -199,7 +199,7 @@ class SettingsActivity : SimpleActivity() {
         settings_manage_blocked_keywords.text = addLockedLabelIfNeeded(R.string.manage_blocked_keywords)
 
         settings_manage_blocked_keywords_holder.setOnClickListener {
-            if (isOrWasThankYouInstalled()) {
+            if (true) {
                 Intent(this, ManageBlockedKeywordsActivity::class.java).apply {
                     startActivity(this)
                 }
