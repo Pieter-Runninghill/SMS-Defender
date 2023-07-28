@@ -44,7 +44,6 @@ class SettingsActivity : SimpleActivity() {
         setupToolbar(settings_toolbar, NavigationIcon.Arrow)
 
         setupPurchaseThankYou()
-        setupCustomizeColors()
         setupCustomizeNotifications()
         setupUseEnglish()
         setupLanguage()
@@ -72,7 +71,6 @@ class SettingsActivity : SimpleActivity() {
         }
 
         arrayOf(
-            settings_color_customization_section_label,
             settings_general_settings_label,
             settings_outgoing_messages_label,
             settings_notifications_label,
@@ -146,13 +144,6 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun setupCustomizeColors() {
-        settings_color_customization_label.text = getCustomizeColorsString()
-        settings_color_customization_holder.setOnClickListener {
-            handleCustomizeColorsClick()
-        }
-    }
-
     private fun setupCustomizeNotifications() {
         settings_customize_notifications_holder.beVisibleIf(isOreoPlus())
         settings_customize_notifications_holder.setOnClickListener {
@@ -181,7 +172,7 @@ class SettingsActivity : SimpleActivity() {
     // support for device-wise blocking came on Android 7, rely only on that
     @TargetApi(Build.VERSION_CODES.N)
     private fun setupManageBlockedNumbers() {
-        settings_manage_blocked_numbers.text = addLockedLabelIfNeeded(R.string.manage_blocked_numbers)
+
         settings_manage_blocked_numbers_holder.beVisibleIf(isNougatPlus())
 
         settings_manage_blocked_numbers_holder.setOnClickListener {
@@ -196,7 +187,6 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupManageBlockedKeywords() {
-        settings_manage_blocked_keywords.text = addLockedLabelIfNeeded(R.string.manage_blocked_keywords)
 
         settings_manage_blocked_keywords_holder.setOnClickListener {
             if (true) {
