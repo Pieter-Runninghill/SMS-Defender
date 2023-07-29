@@ -41,6 +41,10 @@ class SmsReceiver : BroadcastReceiver() {
                 threadId = context.getThreadId(address)
             }
 
+            if(isMessageAllowed(context, body)){
+                handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)
+            }
+
             if (context.baseConfig.blockUnknownNumbers) {
                 val simpleContactsHelper = SimpleContactsHelper(context)
                 simpleContactsHelper.exists(address, privateCursor) { exists ->
@@ -113,11 +117,8 @@ class SmsReceiver : BroadcastReceiver() {
                     context.messagesDB.insertOrUpdate(message)
                     context.updateConversationArchivedStatus(threadId, false)
                     refreshMessages()
-                    if (!isMessageFilteredOut(context, body)) {
-                        context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
-                    }
 
-                    if (isMessageAllowed(context, body)) {
+                    if (!isMessageFilteredOut(context, body)) {
                         context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
                     }
 
