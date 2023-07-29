@@ -170,25 +170,17 @@ class SettingsActivity : SimpleActivity() {
         settings_manage_blocked_numbers_holder.beVisibleIf(isNougatPlus())
 
         settings_manage_blocked_numbers_holder.setOnClickListener {
-            if (true) {
                 Intent(this, ManageBlockedNumbersActivity::class.java).apply {
                     startActivity(this)
                 }
-            } else {
-                FeatureLockedDialog(this) { }
-            }
         }
     }
 
     private fun setupManageBlockedKeywords() {
 
         settings_manage_blocked_keywords_holder.setOnClickListener {
-            if (true) {
-                Intent(this, ManageBlockedKeywordsActivity::class.java).apply {
-                    startActivity(this)
-                }
-            } else {
-                FeatureLockedDialog(this) { }
+            Intent(this, ManageBlockedKeywordsActivity::class.java).apply {
+                startActivity(this)
             }
         }
     }
