@@ -40,21 +40,6 @@
                 android:text="@string/general_settings" />
 
             <RelativeLayout
-                android:id="@+id/settings_purchase_thank_you_holder"
-                style="@style/SettingsHolderTextViewOneLinerStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.simplemobiletools.commons.views.MyTextView
-                    android:id="@+id/settings_purchase_thank_you"
-                    style="@style/SettingsTextLabelStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/purchase_simple_thank_you" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/settings_use_english_holder"
                 style="@style/SettingsHolderCheckboxStyle"
                 android:layout_width="match_parent"
@@ -134,6 +119,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/manage_blocked_keywords" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_manage_allowed_keywords_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.simplemobiletools.commons.views.MyTextView
+                    android:id="@+id/settings_manage_allowed_keywords"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage allowed keywords" />
 
             </RelativeLayout>
 

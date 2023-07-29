@@ -13,6 +13,7 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.smsmessenger.R
 import com.simplemobiletools.smsmessenger.dialogs.ExportMessagesDialog
+import com.simplemobiletools.smsmessenger.dialogs.ManageAllowedKeywordsAdapter
 import com.simplemobiletools.smsmessenger.extensions.config
 import com.simplemobiletools.smsmessenger.extensions.emptyMessagesRecycleBin
 import com.simplemobiletools.smsmessenger.extensions.messagesDB
@@ -43,8 +44,8 @@ class SettingsActivity : SimpleActivity() {
         super.onResume()
         setupToolbar(settings_toolbar, NavigationIcon.Arrow)
 
-        setupPurchaseThankYou()
         setupCustomizeNotifications()
+        setupManageAllowedKeywords()
         setupUseEnglish()
         setupLanguage()
         setupManageBlockedNumbers()
@@ -137,13 +138,6 @@ class SettingsActivity : SimpleActivity() {
         blockedNumbersAtPause = getBlockedNumbers().hashCode()
     }
 
-    private fun setupPurchaseThankYou() {
-        settings_purchase_thank_you_holder.beGoneIf(true)
-        settings_purchase_thank_you_holder.setOnClickListener {
-            launchPurchaseThankYouIntent()
-        }
-    }
-
     private fun setupCustomizeNotifications() {
         settings_customize_notifications_holder.beVisibleIf(isOreoPlus())
         settings_customize_notifications_holder.setOnClickListener {
@@ -195,6 +189,15 @@ class SettingsActivity : SimpleActivity() {
                 }
             } else {
                 FeatureLockedDialog(this) { }
+            }
+        }
+    }
+
+    private fun setupManageAllowedKeywords()
+    {
+        settings_manage_allowed_keywords_holder.setOnClickListener{
+            Intent(this, ManageAllowedKeywordsActivity::class.java).apply {
+                startActivity(this)
             }
         }
     }

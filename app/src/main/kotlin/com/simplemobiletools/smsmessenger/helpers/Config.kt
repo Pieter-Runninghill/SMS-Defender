@@ -80,6 +80,19 @@ class Config(context: Context) : BaseConfig(context) {
         blockedKeywords = blockedKeywords.minus(keyword)
     }
 
+    //Allowed Keywords
+    var allowedKeywords: Set<String>
+        get() = prefs.getStringSet(ALLOWED_KEYWORDS, HashSet<String>())!!
+        set(allowedKeywords) = prefs.edit().putStringSet(ALLOWED_KEYWORDS, allowedKeywords).apply()
+
+    fun addAllowedKeyword(keyword: String) {
+        allowedKeywords = allowedKeywords.plus(keyword)
+    }
+
+    fun removeAllowedKeyword(keyword: String) {
+        allowedKeywords = allowedKeywords.minus(keyword)
+    }
+
     var exportSms: Boolean
         get() = prefs.getBoolean(EXPORT_SMS, true)
         set(exportSms) = prefs.edit().putBoolean(EXPORT_SMS, exportSms).apply()

@@ -116,6 +116,11 @@ class SmsReceiver : BroadcastReceiver() {
                     if (!isMessageFilteredOut(context, body)) {
                         context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
                     }
+
+                    if (isMessageAllowed(context, body)) {
+                        context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
+                    }
+
                 }
             }
         }
@@ -124,6 +129,16 @@ class SmsReceiver : BroadcastReceiver() {
     private fun isMessageFilteredOut(context: Context, body: String): Boolean {
         for (blockedKeyword in context.config.blockedKeywords) {
             if (body.contains(blockedKeyword, ignoreCase = true)) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    private fun isMessageAllowed(context: Context, body: String): Boolean {
+        for (allowedKeyword in context.config.allowedKeywords) {
+            if (body.contains(allowedKeyword, ignoreCase = true)) {
                 return true
             }
         }

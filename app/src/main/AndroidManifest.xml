@@ -35,10 +35,10 @@
         android:name=".App"
         android:allowBackup="true"
         android:appCategory="productivity"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_red"
         android:label="@string/app_launcher_name"
         android:localeConfig="@xml/locale_config"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_red"
         android:theme="@style/AppTheme">
 
         <activity
@@ -147,6 +147,13 @@
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/blocked_keywords"
+            android:parentActivityName=".activities.SettingsActivity" />
+
+        <activity
+            android:name=".activities.ManageAllowedKeywordsActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="Allowed keywords"
             android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
