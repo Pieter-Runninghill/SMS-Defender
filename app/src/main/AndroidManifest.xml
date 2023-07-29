@@ -35,10 +35,10 @@
         android:name=".App"
         android:allowBackup="true"
         android:appCategory="productivity"
-        android:icon="@mipmap/ic_launcher_red"
-        android:label="@string/app_launcher_name"
+        android:icon="@drawable/ic_messenger"
+        android:label="SMS-Defender"
         android:localeConfig="@xml/locale_config"
-        android:roundIcon="@mipmap/ic_launcher_red"
+        android:roundIcon="@drawable/ic_messenger"
         android:theme="@style/AppTheme">
 
         <activity
